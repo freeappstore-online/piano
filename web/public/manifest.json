@@ -1,8 +1,11 @@
 {
   "name": "APPNAME",
   "short_name": "APPNAME",
+  "description": "Free APPNAME app — part of FreeAppStore",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "any",
+  "min_viewport_width": 360,
   "background_color": "#000000",
   "theme_color": "#000000"
 }
