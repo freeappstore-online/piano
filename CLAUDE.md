@@ -8,5 +8,5 @@ A free app on FreeAppStore.
 - Deploy: `git push origin main` (auto-deploys via Cloudflare Pages)
 
 Free, MIT-licensed, no tracking. For platform conventions, read
-https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md
+https://freeappstore.online/skills.md
 before writing or changing anything.
