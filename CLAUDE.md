@@ -37,3 +37,20 @@ Hooks: `import { useAuth, useTheme } from '@freeappstore/sdk/hooks'`
 - API keys that cost money: use `fas.proxy.fetch()` (app-secret proxy or user key vault).
 - Local dev: use `.env.local` (gitignored).
 - See "App Config & Secrets" in SKILLS.md for the full guide.
+
+## MCP (for AI agents)
+
+Connect to the FreeAppStore MCP server for SDK docs, deploy status, and log queries:
+
+```json
+{
+  "mcpServers": {
+    "freeappstore": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.freeappstore.online/mcp"]
+    }
+  }
+}
+```
+
+Tools: `sdk_reference`, `deploy_status`, `app_info`, `app_logs`, `platform_guide`, `list_apps`.

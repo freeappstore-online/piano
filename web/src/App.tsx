@@ -1,11 +1,11 @@
 import { initApp } from '@freeappstore/sdk'
-import { FasShell, BuildInfo } from '@freeappstore/sdk/ui'
+import { Shell, BuildInfo } from '@freeappstore/sdk/ui'
 
 const fas = initApp({ appId: 'APPNAME' })
 
 export default function App() {
   return (
-    <FasShell app={fas} appName="APPNAME">
+    <Shell app={fas} appName="APPNAME">
       <div className="flex flex-1 items-center justify-center">
         <div className="text-center">
           <h1 className="display-font text-3xl font-bold text-[var(--ink)]">APPNAME</h1>
@@ -13,6 +13,6 @@ export default function App() {
         </div>
       </div>
       <BuildInfo />
-    </FasShell>
+    </Shell>
   )
 }
