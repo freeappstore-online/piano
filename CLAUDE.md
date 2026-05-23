@@ -11,6 +11,25 @@ Free, MIT-licensed, no tracking. For platform conventions, read
 https://freeappstore.online/skills.md
 before writing or changing anything.
 
+## SDK
+
+This app uses `@freeappstore/sdk` (v0.12.0+). Available modules:
+
+- `fas.auth` — GitHub OAuth sign-in (SSO across all apps)
+- `fas.kv` — per-user storage (1MB, 100 keys)
+- `fas.collections` — Firestore-style document database
+- `fas.counters` — atomic shared counters
+- `fas.rooms` — real-time WebSocket rooms (32 peers)
+- `fas.proxy` — secret-injecting API proxy
+- `fas.keys` — user API key vault (OpenAI, Anthropic, etc.)
+- `fas.email` — transactional email (100/day)
+- `fas.log` — logging (auto-captures errors, uploads to server)
+- `fas.webhooks` — outbound webhook management
+- `fas.roles` — app-level RBAC
+
+UI components: `import { FasShell, Modal, Card, Tabs, Badge, ... } from '@freeappstore/sdk/ui'`
+Hooks: `import { useAuth, useTheme } from '@freeappstore/sdk/hooks'`
+
 ## Config & secrets
 
 - Never commit `.env.production` (compliance check fails).

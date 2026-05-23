@@ -4,10 +4,12 @@
   "packageManager": "pnpm@10.30.3",
   "engines": { "node": ">=22" },
   "pnpm": { "onlyBuiltDependencies": ["esbuild"] },
+  "repository": { "type": "git", "url": "git+https://github.com/freeappstore-online/APPNAME.git" },
   "scripts": {
     "dev": "pnpm --filter @APPNAME/web dev",
     "build": "pnpm --filter @APPNAME/web build",
     "preview": "pnpm --filter @APPNAME/web preview",
-    "typecheck": "pnpm --filter @APPNAME/web exec tsc -b"
+    "typecheck": "pnpm --filter @APPNAME/web exec tsc -b",
+    "test": "pnpm --filter @APPNAME/web exec tsc -b"
   }
 }
