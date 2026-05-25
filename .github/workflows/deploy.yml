@@ -79,6 +79,21 @@ jobs:
             --no-progress
           echo "Deployed apps/${GITHUB_REPOSITORY##*/} from ${GITHUB_SHA::7}"
 
+      # Route check — warn if the app deployed but isn't reachable.
+      # This catches the case where someone created the repo manually
+      # (bypassing `fas publish`) and the host worker has no route for it.
+      - name: Verify route
+        if: always()
+        run: |
+          APP_ID="${GITHUB_REPOSITORY##*/}"
+          URL="https://${APP_ID}.freeappstore.online"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL" --max-time 10 || echo "000")
+          if [ "$STATUS" = "530" ] || [ "$STATUS" = "522" ] || [ "$STATUS" = "000" ]; then
+            echo "::warning::Deployed to R2 but ${URL} returned HTTP ${STATUS} (not routed). Run 'npx @freeappstore/cli publish --name ${APP_ID} -y' to register the route."
+          else
+            echo "Live at ${URL} (HTTP ${STATUS})"
+          fi
+
       # Code health scan — runs vcqa post-deploy and uploads the JSON report
       # + badge SVG to R2 so the console and store listings can display them.
       - name: Code health scan
