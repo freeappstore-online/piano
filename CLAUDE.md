@@ -15,7 +15,7 @@ before writing or changing anything.
 
 This app uses `@freeappstore/sdk` (v0.12.0+). Available modules:
 
-- `fas.auth` — GitHub OAuth sign-in (SSO across all apps)
+- `fas.auth` — OAuth sign-in (SSO across all apps). **Always offer both GitHub and Google sign-in.**
 - `fas.kv` — per-user storage (1MB, 100 keys)
 - `fas.collections` — Firestore-style document database
 - `fas.counters` — atomic shared counters
