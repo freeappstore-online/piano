@@ -63,6 +63,13 @@ jobs:
           test -d ./web/dist || { echo "::error::No build output at web/dist"; exit 1; }
           test -n "$(ls -A ./web/dist)" || { echo "::error::web/dist is empty"; exit 1; }
 
+      # Write build metadata (total asset size) so the store can display
+      # "installed size" on the detail page. Uploaded alongside the app.
+      - name: Write build info
+        run: |
+          SIZE=$(du -sb ./web/dist | cut -f1)
+          echo "{\"size\":${SIZE}}" > ./web/dist/.buildinfo.json
+
       # R2 speaks the S3 API. The aws CLI is preinstalled on ubuntu-latest;
       # --delete prunes assets removed in this build so abandoned files don't
       # accumulate over the app's lifetime.
