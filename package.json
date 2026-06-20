@@ -1,15 +1,15 @@
 {
-  "name": "APPNAME",
+  "name": "piano",
   "private": true,
   "packageManager": "pnpm@10.30.3",
   "engines": { "node": ">=22" },
   "pnpm": { "onlyBuiltDependencies": ["esbuild"] },
-  "repository": { "type": "git", "url": "git+https://github.com/freeappstore-online/APPNAME.git" },
+  "repository": { "type": "git", "url": "git+https://github.com/freeappstore-online/piano.git" },
   "scripts": {
-    "dev": "pnpm --filter @APPNAME/web dev",
-    "build": "pnpm --filter @APPNAME/web build",
-    "preview": "pnpm --filter @APPNAME/web preview",
-    "typecheck": "pnpm --filter @APPNAME/web exec tsc -b",
-    "test": "pnpm --filter @APPNAME/web exec tsc -b"
+    "dev": "pnpm --filter @piano/web dev",
+    "build": "pnpm --filter @piano/web build",
+    "preview": "pnpm --filter @piano/web preview",
+    "typecheck": "pnpm --filter @piano/web exec tsc -b",
+    "test": "pnpm --filter @piano/web exec tsc -b"
   }
 }

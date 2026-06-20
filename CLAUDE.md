@@ -1,8 +1,8 @@
-# APPNAME
+# piano
 
 A free app on FreeAppStore.
 
-- Subdomain: `APPNAME.freeappstore.online`
+- Subdomain: `piano.freeappstore.online`
 - Dev: `pnpm install && pnpm dev`
 - Build: `pnpm build`
 - Deploy: `git push origin main` (auto-deploys to R2 via GitHub Actions)

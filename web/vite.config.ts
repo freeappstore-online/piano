@@ -39,9 +39,9 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'APPNAME',
-        short_name: 'APPNAME',
-        description: 'Free APPNAME app — part of FreeAppStore',
+        name: 'piano',
+        short_name: 'piano',
+        description: 'Free piano app — part of FreeAppStore',
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
