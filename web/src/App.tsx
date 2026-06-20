@@ -89,7 +89,7 @@ const WHITE_KEY_MAP: Record<string, number> = {
 }
 
 const BLACK_KEY_MAP: Record<string, number> = {
-  'w': 0, 'e': 1, 't': 2, 'y': 3, 'u': 4, 'o': 5, 'p': 6, '[': 7, ']': 8,
+  'w': 0, 'e': 1, 't': 2, 'y': 3, 'u': 4, 'o': 5, 'p': 6, '[': 7, ']': 8, '=': 9,
 }
 
 export default function App() {
@@ -255,7 +255,7 @@ export default function App() {
 
         {/* Keyboard hint */}
         <p className="text-xs" style={{ color: 'var(--muted)' }}>
-          Keyboard: A-L for white keys, W E T Y U O P for black keys
+          Keyboard: A S D F G H J K L ; ' \ Z X C for white keys | W E T Y U O P [ ] = for black keys
         </p>
       </div>
     </Shell>
