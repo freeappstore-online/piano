@@ -106,40 +106,43 @@ export default function App() {
   const press = useCallback((key: KeyDef) => {
     playNote(key.freq, sustain)
     setActiveKeys(prev => new Set(prev).add(key.name))
-    setTimeout(() => {
-      setActiveKeys(prev => {
-        const next = new Set(prev)
-        next.delete(key.name)
-        return next
-      })
-    }, sustain ? 600 : 200)
   }, [sustain])
+
+  const release = useCallback((key: KeyDef) => {
+    setActiveKeys(prev => {
+      const next = new Set(prev)
+      next.delete(key.name)
+      return next
+    })
+  }, [])
+
+  // Resolve a keyboard key to a KeyDef
+  const resolveKey = useCallback((k: string): KeyDef | undefined => {
+    const wi = WHITE_KEY_MAP[k]
+    if (wi !== undefined && wi < whiteKeys.length) return whiteKeys[wi]
+    const bi = BLACK_KEY_MAP[k]
+    if (bi !== undefined && bi < blackKeys.length) return blackKeys[bi]
+    return undefined
+  }, [whiteKeys, blackKeys])
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.repeat || e.metaKey || e.ctrlKey) return
-      const k = e.key.toLowerCase()
-
-      // White key?
-      const wi = WHITE_KEY_MAP[k]
-      if (wi !== undefined && wi < whiteKeys.length) {
-        e.preventDefault()
-        press(whiteKeys[wi])
-        return
-      }
-
-      // Black key?
-      const bi = BLACK_KEY_MAP[k]
-      if (bi !== undefined && bi < blackKeys.length) {
-        e.preventDefault()
-        press(blackKeys[bi])
-        return
-      }
+      const key = resolveKey(e.key.toLowerCase())
+      if (key) { e.preventDefault(); press(key) }
+    }
+    const up = (e: KeyboardEvent) => {
+      const key = resolveKey(e.key.toLowerCase())
+      if (key) release(key)
     }
 
     window.addEventListener('keydown', down)
-    return () => window.removeEventListener('keydown', down)
-  }, [press, whiteKeys, blackKeys])
+    window.addEventListener('keyup', up)
+    return () => {
+      window.removeEventListener('keydown', down)
+      window.removeEventListener('keyup', up)
+    }
+  }, [press, release, resolveKey])
 
   // Black key positioning: map each black key to its position relative to white keys
   const blackKeyPositions = blackKeys.map(bk => {
@@ -190,7 +193,7 @@ export default function App() {
         {/* Piano */}
         <div
           className="relative select-none"
-          style={{ width: '100%', maxWidth: 900, height: 220 }}
+          style={{ width: '100%', maxWidth: 900, height: 220, touchAction: 'none' }}
         >
           {/* White keys */}
           <div className="absolute inset-0 flex">
@@ -198,6 +201,8 @@ export default function App() {
               <button
                 key={k.name}
                 onPointerDown={() => press(k)}
+                onPointerUp={() => release(k)}
+                onPointerLeave={() => release(k)}
                 className="relative flex flex-col items-center justify-end pb-2 transition-colors"
                 style={{
                   width: `${whiteW}%`,
@@ -229,6 +234,8 @@ export default function App() {
               <button
                 key={k.name}
                 onPointerDown={(e) => { e.stopPropagation(); press(k) }}
+                onPointerUp={() => release(k)}
+                onPointerLeave={() => release(k)}
                 className="absolute top-0 transition-colors"
                 style={{
                   left: `${left}%`,
