@@ -27,7 +27,7 @@ This app uses `@freeappstore/sdk` (v0.14.0+). Available modules:
 - `fas.webhooks` — outbound webhook management
 - `fas.roles` — app-level RBAC
 - `fas.friends` — platform-level friend relationships (shared across all apps)
-- `fas.voice` — speech-to-text via `useVoiceInput` hook
+- `fas.voice` — speech-to-text via `useVoiceInput` hook (React only)
 
 UI components: `import { FasShell, Modal, Card, Tabs, Badge, ... } from '@freeappstore/sdk/ui'`
 Hooks: `import { useAuth, useTheme, useFriends, useVoiceInput } from '@freeappstore/sdk/hooks'`
@@ -55,4 +55,4 @@ Connect to the FreeAppStore MCP server for SDK docs, deploy status, and log quer
 }
 ```
 
-Tools: `sdk_reference`, `deploy_status`, `app_info`, `app_logs`, `platform_guide`, `list_apps`.
+Tools: `create_app`, `update_files`, `read_file`, `list_files`, `agent_build`, `agent_status`, `list_apps`, `app_info`, `deploy_status`, `app_logs`, `platform_guide`, `sdk_reference`.
