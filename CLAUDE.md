@@ -9,7 +9,8 @@ A free app on FreeAppStore.
 
 Free, MIT-licensed, no tracking. For platform conventions, read
 https://freeappstore.online/skills.md
-before writing or changing anything.
+before writing or changing anything (same guide, source form:
+https://raw.githubusercontent.com/freeappstore-online/freeappstore/main/SKILLS.md).
 
 ## SDK
 
