@@ -1,0 +1,6 @@
+{
+  "appId": "piano",
+  "applicationRoot": "web",
+  "outputPath": "web/dist",
+  "buildCommand": "pnpm build"
+}
